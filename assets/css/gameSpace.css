@@ -1,0 +1,18 @@
+.gameSpace {
+    background: #222222;
+}
+
+.player {
+    background: blue;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+}
+
+
+.enemy {
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+}
