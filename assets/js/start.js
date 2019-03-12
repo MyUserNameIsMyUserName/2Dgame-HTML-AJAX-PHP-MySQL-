@@ -67,22 +67,29 @@ $(document).ready(function(){
 setInterval(function() {
     $.ajax({  
         type: 'POST',  
-        url: 'updatePlayerPos.php', 
+        url: 'included_files/updatePlayerPos.php', 
         data: { playerLeft: $playerLeft , playerTop: $playerTop }
     });
-      
-      $.ajax({  
-          type: 'GET',  
-          url: 'updateViewPlayer.php', 
-          success: function(data) {
-              console.log(data); //Try to log the data and check the response
-              $enemyLeft = (data).substr(0,3);
-              $enemyTop = (data).substr(3,3);
-              $enemyTop = parseInt($enemyTop) + 25;
-              
-                $(".enemy").css('top', $enemyTop)
-                $(".enemy").css('left', $enemyLeft);
 
-          }
-      });
-    }, 33);
+    setTimeout(function() {
+        
+    $.ajax({  
+        type: 'GET',  
+        url: 'included_files/updateViewPlayer.php', 
+        success: function(data) {
+            console.log(data); //Try to log the data and check the response
+            $enemyLeft = (data).substr(0,3);
+            $enemyTop = (data).substr(3,3);
+            $enemyTop = parseInt($enemyTop);
+            $enemyColor = (data).substr(6,7);
+            
+              $(".enemy").css('top', $enemyTop)
+              $(".enemy").css('left', $enemyLeft);
+              $(".enemy").css('background', $enemyColor);
+
+        }
+    });
+    }, 50);
+
+      
+    }, 100);
