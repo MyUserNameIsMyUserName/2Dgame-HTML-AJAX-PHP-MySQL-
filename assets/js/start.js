@@ -2,12 +2,9 @@ $widthRez = 768;
 $heightRez = 768;
 $playerTop = $widthRez/2;
 $playerLeft = $heightRez/2;
-
-$enemyTop = $widthRez/4;
-$enemyLeft = $heightRez/4;
+$playerAngle = 0;
 
 $playerName = "miki";
-$numberOfEnemy = 0;
 
 $(document).ready(function(){
     $(".gameSpace").width($widthRez);
@@ -21,11 +18,16 @@ $(document).ready(function(){
     $(".player").css('top', $playerTop)
     $(".player").css('left', $playerLeft);
 
-    $(".enemy").width($widthRez/100);
-    $(".enemy").height($widthRez/100);
-    
-    $(".enemy").css('top', $enemyTop)
-    $(".enemy").css('left', $enemyLeft);
+
+$(document).on("mousemove", function(e){
+
+    $playerAngle = Math.atan2(e.pageY - $playerTop , e.pageX - $playerLeft) + Math.PI/2;
+
+
+$('.player').css({"transform" : "rotate("  + $playerAngle + "rad)"} )
+
+
+})
   });
 
 
@@ -68,8 +70,9 @@ setInterval(function() {
     $.ajax({  
         type: 'POST',  
         url: 'included_files/updatePlayerPos.php', 
-        data: { playerLeft: $playerLeft , playerTop: $playerTop }
+        data: { playerLeft: $playerLeft , playerTop: $playerTop, playerAngle: $playerAngle }
     });
+
 
     setTimeout(function() {
         
@@ -93,6 +96,7 @@ setInterval(function() {
                 if($('#'+json[i].username).length){
                     $('#'+json[i].username).css('top', json[i].top_position);
                     $('#'+json[i].username).css('left', json[i].left_position);
+                    $('#'+json[i].username).css({"transform" : "rotate("  + json[i].user_angle + "rad)"} );
                     $('#'+json[i].username).addClass('safe');
                 }else{
                     $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+';"><p>'+json[i].username+'</p></div>')

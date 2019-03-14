@@ -1,9 +1,9 @@
 <?php
 
 $servername = "localhost";
-$username = "newgamephp";
-$password = "newgamephp";
-$dbname = "newgamephp";
+$username = "novitestingyes";
+$password = "novitestingyes";
+$dbname = "novitestingyes";
 
 
 // Create connection
