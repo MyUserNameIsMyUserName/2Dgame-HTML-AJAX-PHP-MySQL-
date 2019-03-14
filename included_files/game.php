@@ -5,7 +5,7 @@
 
 ?>
 
-<script src="assets/js/jquery-3.3.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 <script src="assets/js/start.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/gameSpace.css">
 
