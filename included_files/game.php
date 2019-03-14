@@ -12,6 +12,6 @@
 
 
 <div class="gameSpace">
-    <div class="player" id='<?php echo $_SESSION['username']; ?>' style='background:<?php echo $_SESSION['usercolor'];?>;'></div>
-    <div class="enemy"></div>
+    <div class="player" id='<?php echo $_SESSION['username']; ?>' style='background:<?php echo $_SESSION['usercolor'];?>;'><p><?php echo $_SESSION['username']; ?></p></div>
+    
 </div>
