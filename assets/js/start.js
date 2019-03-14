@@ -7,7 +7,7 @@ $enemyTop = $widthRez/4;
 $enemyLeft = $heightRez/4;
 
 $playerName = "miki";
-
+$numberOfEnemy = 0;
 
 $(document).ready(function(){
     $(".gameSpace").width($widthRez);
@@ -73,23 +73,58 @@ setInterval(function() {
 
     setTimeout(function() {
         
-    $.ajax({  
-        type: 'GET',  
-        url: 'included_files/updateViewPlayer.php', 
-        success: function(data) {
-            console.log(data); //Try to log the data and check the response
-            $enemyLeft = (data).substr(0,3);
-            $enemyTop = (data).substr(3,3);
-            $enemyTop = parseInt($enemyTop);
-            $enemyColor = (data).substr(6,7);
-            
-              $(".enemy").css('top', $enemyTop)
-              $(".enemy").css('left', $enemyLeft);
-              $(".enemy").css('background', $enemyColor);
+        //start ajax request
+    $.ajax({
+    url: "included_files/getEnemyInfo.php",
+    //force to handle it as text
+    dataType: "text",
+    success: function(data) {
+        
+        $('.enemy').removeClass('safe');
+        //data downloaded so we call parseJSON function 
+        //and pass downloaded data
+        //now json variable contains data in json format
+        //let's display a few items
+        if (String(data) != '[0 results]') {
 
+            var json = $.parseJSON(data);
+            for (var i=0;i<json.length;++i)
+            {
+                if($('#'+json[i].username).length){
+                    $('#'+json[i].username).css('top', json[i].top_position);
+                    $('#'+json[i].username).css('left', json[i].left_position);
+                    $('#'+json[i].username).addClass('safe');
+                }else{
+                    $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+';"><p>'+json[i].username+'</p></div>')
+                };
+            };
+        };
+
+        
+        $('.enemy').not('.safe').remove();
         }
     });
-    }, 50);
+
+    
+    }, 500);
 
       
-    }, 100);
+    },100);
+
+
+
+
+    $(window).bind('beforeunload', function(){
+        $.ajax({  
+            type: 'GET',  
+            url: 'included_files/removePlayer.php'
+        });
+      });
+
+
+      window.addEventListener("beforeunload", function(event) {
+        $.ajax({  
+            type: 'GET',  
+            url: 'included_files/removePlayer.php'
+        });
+      });

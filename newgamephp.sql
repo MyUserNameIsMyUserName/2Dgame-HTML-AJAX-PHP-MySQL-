@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2019 at 08:34 PM
+-- Generation Time: Mar 14, 2019 at 03:31 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -37,14 +37,6 @@ CREATE TABLE `users_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users_info`
---
-
-INSERT INTO `users_info` (`user_id`, `username`, `left_position`, `top_position`, `user_color`) VALUES
-(86, 'slavko', 535, 384, '#0000ff'),
-(87, 'xxxxxx', 375, 162, '#00ff00');
-
---
 -- Indexes for dumped tables
 --
 
@@ -62,7 +54,7 @@ ALTER TABLE `users_info`
 -- AUTO_INCREMENT for table `users_info`
 --
 ALTER TABLE `users_info`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

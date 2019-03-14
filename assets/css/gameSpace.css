@@ -2,16 +2,31 @@
     background: #222222;
 }
 
-.player {
+.player, .enemy {
     border-radius: 50%;
+    color: white;
     position: absolute;
     z-index: 100;
 }
 
+.player p, .enemy p{
+    font-size: 0px;
+    transition: 0.5s ease all;
+
+}
 
 .enemy {
-    background: red;
-    border-radius: 50%;
-    position: absolute;
-    z-index: 100;
+    border: 5px solid red;
+    opacity: 0.5;
+    transition: 0.05s linear all;
+    width: 10px;
+    height: 10px;
+}
+
+.enemy:hover {
+    opacity: 1;
+}
+
+.player:hover p, .enemy:hover p {
+    font-size: 20px;
 }
