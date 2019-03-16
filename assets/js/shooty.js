@@ -15,11 +15,11 @@ function intersects(a,b,c,d,p,q,r,s) {
 
 
   $(document).click(function(){
-      $('.weapon').css('background', 'white');
+    $enemy = $('.enemy');
     var shootyStatus;
     var playerWeaponA = $(".weaponA").offset();
     var playerWeaponB = $(".weaponB").offset();
-    var whoIsShot;
+    whoIsShot = "Null";
 
     $( ".enemy" ).each(function( index ) {
         console.log( index + ": " + $( this ).text() );
@@ -35,16 +35,32 @@ function intersects(a,b,c,d,p,q,r,s) {
     if (intersectStatus || intersectStatus2 || intersectStatus3 || intersectStatus4) {
         
         whoIsShot = $(this).attr('id');
-        alert(whoIsShot);
+        //alert(whoIsShot);
 
     };
       });
+      if (whoIsShot !== "Null") {
+        $('.weapon').css('background', 'red');
+        var help1 = ($('.player').offset().left -  $('#'+whoIsShot).offset().left);
+        var help2 = ($('.player').offset().top -   $('#'+whoIsShot).offset().top);
+        dist = Math.sqrt(Math.pow( help1 , 2)+ Math.pow( help2 , 2)) ;
+        $('.weapon').css('height', dist);
+        $('.weapon').css('top', (-dist));
+        $('.weapon').css('z-index', '2000');
+      } else {
+        $('.weapon').css('height', 2000);
+        $('.weapon').css('top', -2000);
+        $('.weapon').css('z-index', '2000');
+        $('.weapon').css('background', 'white');
+      }
+
+
+
       setTimeout(function(){
         $('.weapon').css('background', 'transparent');
       }, 50);
       
-  }
-  );
+  });
 
 
 });

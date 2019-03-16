@@ -1,3 +1,8 @@
+body{
+    margin: 0px;
+    overflow: hidden;
+}
+
 .gameSpace {
     background: #222222;
     cursor:none;
@@ -23,8 +28,6 @@
     text-shadow: 0px 0px 10px red;
     /*opacity: 0.5;*/
     transition: 0.05s linear all;
-    width: 10px;
-    height: 10px;
 }
 
 .enemy:hover {
@@ -38,18 +41,18 @@
 
 
 .player:before  {
-    content: "<:>";
+    content: "..";
     color: red;
     height: 10px;
     width: 1px;
     position: absolute;
     top: -150px;
-    right: 11px;
+    right: 4px;
 }
 
 
 .enemy:before {
-    content: "<>";
+    content: ".";
     color: gray;
     height: 10px;
     width: 1px;
@@ -86,7 +89,7 @@
     right: 0px;
     top: 0px;
     height: 3px;
-    background: red;
+    /*background: red;*/
 }
 
 .weapon:before {
@@ -106,9 +109,10 @@
     height: 1px;
     position: absolute;
     display: block;
-    background: transparent;
-    top: 0px;
-    left: 0px;
+    background: #ff0303;
+    top: 0%;
+    left: 0%;
+    z-index: 20;
 }
 
 .enemyB {
@@ -116,9 +120,9 @@
     height: 1px;
     position: absolute;
     display: block;
-    background: transparent;
-    top: 10px;
-    left: 0px;
+    background: #ff0303;
+    top: 100%;
+    left: 0%;
     }
 
 .enemyC {
@@ -127,9 +131,9 @@
     height: 1px;
     position: absolute;
     display: block;
-    background: transparent;
-    top: 0px;
-    left: 10px;
+    background: #ff0303;
+    top: 0%;
+    left: 100%;
 }
 
 .enemyD {
@@ -138,9 +142,9 @@
     height: 1px;
     position: absolute;
     display: block;
-    background: transparent;
-    top: 10px;
-    left: 10px;
+    background: #ff0303;
+    top: 100%;
+    left: 100%;
 }
 
 
@@ -151,7 +155,8 @@
     content: " ";
     width: 700px;
     height: 700px;
-    background: #ffffff12;   
+    background: #ffffff12;
     border-radius: 50%;
     z-index: -10;
+    filter: blur(20px);
 }

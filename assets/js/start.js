@@ -1,5 +1,5 @@
-$widthRez = 768;
-$heightRez = 768;
+$widthRez = $( window ).width();
+$heightRez = $( window ).height();
 $playerTop = $widthRez/2;
 $playerLeft = $heightRez/2;
 $playerAngle = 0;
@@ -99,7 +99,7 @@ setInterval(function() {
                     $('#'+json[i].username).css({"transform" : "rotate("  + json[i].user_angle + "rad)"} );
                     $('#'+json[i].username).addClass('safe');
                 }else{
-                    $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+';"><p>'+json[i].username+'</p><div class="enemyA"></div><div class="enemyB"></div><div class="enemyC"></div><div class="enemyD"></div></div>')
+                    $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+'; width:'+$widthRez/100+'; height:'+$widthRez/100+';"><p>'+json[i].username+'</p><div class="enemyA"></div><div class="enemyB"></div><div class="enemyC"></div><div class="enemyD"></div></div>')
                 };
                 var help1 = ($playerLeft - json[i].left_position);
                 var help2 = ($playerTop - json[i].top_position);
