@@ -7,7 +7,7 @@ Pressing buttons player moves.....JSON move enemies....moving mouse moves scope.
 
 Custom collision detection and reporting which enemy has been shot.
 Enemies have 4 dots in corners and they form 4 lines that are checked if they intesect with gun fire line. 
-This is done for all enemies and will report using alert enemy name that has been hit.
+This is done for all enemies. In case of hit it will find that enemy position, calculate distance from player and restrict gun shot length to that distance.
 
 
 Basic fog of war....hidding far enemies.
