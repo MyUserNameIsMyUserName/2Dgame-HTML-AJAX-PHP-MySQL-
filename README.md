@@ -24,3 +24,4 @@ Me good, you? yes :D
 Custom collision/hit detection
 
 ![alt text](https://raw.githubusercontent.com/MyUserNameIsMyUserName/2Dgame-HTML-AJAX-PHP-MySQL-/master/assets/Screenshot_2.png)
+![alt text](https://raw.githubusercontent.com/MyUserNameIsMyUserName/2Dgame-HTML-AJAX-PHP-MySQL-/master/assets/Untitle222d.png)
