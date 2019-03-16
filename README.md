@@ -17,3 +17,8 @@ I love this kind of language...since I stumbled upon few clients that spoke it.
 
 Me good, you? yes :D
 ![alt text](https://raw.githubusercontent.com/MyUserNameIsMyUserName/2Dgame-HTML-AJAX-PHP-MySQL-/master/assets/Screenshot_1.png)
+
+
+
+Custom collision/hit detection
+![alt text](https://raw.githubusercontent.com/MyUserNameIsMyUserName/2Dgame-HTML-AJAX-PHP-MySQL-/master/assets/Screenshot_2.png)
