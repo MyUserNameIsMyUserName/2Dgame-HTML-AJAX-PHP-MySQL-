@@ -4,7 +4,7 @@
 }
 
 .player, .enemy {
-    border-radius: 50%;
+    /* border-radius: 50%; */
     color: white;
     position: absolute;
     z-index: 100;
@@ -44,6 +44,7 @@
     width: 1px;
     position: absolute;
     top: -150px;
+    right: 11px;
 }
 
 
@@ -54,4 +55,103 @@
     width: 1px;
     position: absolute;
     top: -150px;
+}
+
+
+
+
+.weapon {
+    background: transparent;
+    width: 1px;
+    height: 1000px;
+    position: absolute;
+    top: -1000px;
+    right: 0px;
+}
+
+
+.weaponB {
+    position: absolute;
+    display: block;
+    width: 1px;
+    height: 1px;
+    background: blue;
+    bottom: 0px;
+}
+
+.weaponA {
+    display: block;
+    position: absolute;
+    width: 3px;
+    right: 0px;
+    top: 0px;
+    height: 3px;
+    background: red;
+}
+
+.weapon:before {
+    content: "||";
+    color   : red;
+    height: 10px;
+    position: absolute;
+    bottom  : 0px;
+    left: -2.5px;
+    border-bottom: 5px solid red;
+}
+
+
+
+.enemyA {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    background: transparent;
+    top: 0px;
+    left: 0px;
+}
+
+.enemyB {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    background: transparent;
+    top: 10px;
+    left: 0px;
+    }
+
+.enemyC {
+
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    background: transparent;
+    top: 0px;
+    left: 10px;
+}
+
+.enemyD {
+
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    background: transparent;
+    top: 10px;
+    left: 10px;
+}
+
+
+.player:after {
+    position: absolute;
+    left: -350px;
+    top: -350px;
+    content: " ";
+    width: 700px;
+    height: 700px;
+    background: #ffffff12;   
+    border-radius: 50%;
+    z-index: -10;
 }

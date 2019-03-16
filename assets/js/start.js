@@ -99,8 +99,16 @@ setInterval(function() {
                     $('#'+json[i].username).css({"transform" : "rotate("  + json[i].user_angle + "rad)"} );
                     $('#'+json[i].username).addClass('safe');
                 }else{
-                    $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+';"><p>'+json[i].username+'</p></div>')
+                    $('.gameSpace').append('<div class="enemy safe" id="'+json[i].username+'" style="left:'+json[i].left_position+'px;top:'+json[i].top_position+'px; background:'+json[i].user_color+';"><p>'+json[i].username+'</p><div class="enemyA"></div><div class="enemyB"></div><div class="enemyC"></div><div class="enemyD"></div></div>')
                 };
+                var help1 = ($playerLeft - json[i].left_position);
+                var help2 = ($playerTop - json[i].top_position);
+                var dist = Math.sqrt(Math.pow( help1 , 2)+ Math.pow( help2 , 2));
+                if (dist > 350) {
+                    $('#'+json[i].username).css('opacity', '0');
+                } else {
+                    $('#'+json[i].username).css('opacity', '1');
+                }
             };
         };
 
