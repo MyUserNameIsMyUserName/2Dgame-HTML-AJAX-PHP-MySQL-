@@ -16,3 +16,4 @@ PS.
 I love this kind of language...since I stumbled upon few clients that spoke it. 
 
 Me good, you? yes :D
+![alt text](https://raw.githubusercontent.com/username/projectname/branch/path/to/img.png)
