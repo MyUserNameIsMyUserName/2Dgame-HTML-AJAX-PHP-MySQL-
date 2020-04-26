@@ -12,28 +12,24 @@ $(document).ready(function(){
         oneSecFPS = 0;
     }, 1000);
 
-    $('script').ready(function(){
+    userInputInterval = setInterval(function(){
+        movePlayer();
+    }, 5);
 
-        userInputInterval = setInterval(function(){
-            movePlayer();
-        }, 5);
-    
-    })
-
-
-function oneFrameFunction(){
-    oneSecFPS++;
-    allDoneFPS++;
-    $('.doneFPS').text(allDoneFPS);
-    updateGameSpace(gameResolution, playerPositionTop, playerPositionLeft, playerSize);
-    //stressFunction();
-}
+    function oneFrameFunction(){
+        oneSecFPS++;
+        allDoneFPS++;
+        $('.doneFPS').text(allDoneFPS);
+        updateGameSpace(gameResolution, playerPositionTop, playerPositionLeft, playerSize);
+        //stressFunction();
+    }
 
     
 
 function updateGameSpace(gameRez, ppTop, ppLeft, pSize){
     $(".gameCam").css({  "overflow": "hidden", "position": "relative", "top": "5px", "left": "5px", "width": 138*gameRez, "height": 72*gameRez });
-    $(".gameSpace").css({ "background-color": "gray","background-image": "linear-gradient(rgba(156, 156, 156, 0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(154, 156, 154, 0.7) 1px, transparent 1px)", "position": "relative", "top": "5px", "left": "5px", "background-size" : 5*gameResolution*cameraZoom+"px "+5*gameResolution*cameraZoom+"px", "width": 138*gameRez*mapSize*cameraZoom, "height": 72*gameRez*mapSize*cameraZoom,  "left": 138*gameRez*cameraLeftPosition*cameraZoom, "top": 138*gameRez*cameraTopPosition*cameraZoom });
+    //$(".gameSpace").css({ "background-color": "gray","background-image": "linear-gradient(rgba(156, 156, 156, 0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(154, 156, 154, 0.7) 1px, transparent 1px)", "position": "relative", "top": "5px", "left": "5px", "background-size" : 5*gameResolution*cameraZoom+"px "+5*gameResolution*cameraZoom+"px", "width": 138*gameRez*mapSize*cameraZoom, "height": 72*gameRez*mapSize*cameraZoom,  "left": 138*gameRez*cameraLeftPosition*cameraZoom, "top": 138*gameRez*cameraTopPosition*cameraZoom });
+    $(".gameSpace").css({ "position": "relative", "top": "5px", "left": "5px", "background-size" : "cover", "width": 138*gameRez*mapSize*cameraZoom, "height": 72*gameRez*mapSize*cameraZoom,  "left": 138*gameRez*cameraLeftPosition*cameraZoom, "top": 138*gameRez*cameraTopPosition*cameraZoom });
     if (playerRuningStatus){
         $(".player").css({ "border": (playerSize)+"px solid lightblue", "box-shadow": "0px 0px 10px lightblue","background-color": "blue", "position": "absolute", "left": 138*gameRez*ppLeft*cameraZoom, "top": 138*gameRez*ppTop*cameraZoom, "width": gameRez*pSize*cameraZoom, "height": gameRez*pSize*cameraZoom, "border-radius": "2px" , "transform" : "rotate("  + playerAngle + "rad)"});
     } else {
@@ -42,7 +38,6 @@ function updateGameSpace(gameRez, ppTop, ppLeft, pSize){
     //$(".player").css({ "background-color": "lightgreen", "position": "absolute", "left": 138*gameRez*ppLeft*cameraZoom, "top": 138*gameRez*ppTop*cameraZoom, "width": gameRez*pSize*cameraZoom, "height": gameRez*pSize*cameraZoom, "border-radius": "2px" });
     $(".playerTop").html(playerPositionTop);
     $(".playerLeft").html(playerPositionLeft);
-    
 }
 
 
@@ -50,14 +45,20 @@ $(document).on('DOMMouseScroll mousewheel', function (e) {
     if(e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) { //alternative options for wheelData: wheelDeltaX & wheelDeltaY
       //scroll down
       //console.log('Down');
-      if (cameraZoom > 0.01){
+      var helperMapSizeRelative = $(".gameSpace").width();
+      var helperCameraSizeResolution = $(".gameCam").width();
+      var helperMapSizeRelativeT = $(".gameSpace").height();
+      var helperCameraSizeResolutionT = $(".gameCam").height();
+      if ((cameraZoom > 0.01) && (( helperMapSizeRelative >  helperCameraSizeResolution) || ( helperMapSizeRelativeT >  helperCameraSizeResolutionT))){
         cameraZoom -= 0.01;
+        redrawMapObjects();
       }
     } else {
       //scroll up
       //console.log('Up');
       if (cameraZoom < 1.2){
         cameraZoom += 0.01;
+        redrawMapObjects();
       }
     }
     //prevent page fom scrolling
@@ -140,7 +141,7 @@ $('.camTopMove').mouseover(function(){
     clearInterval(cameraHoverHelper);
       cameraHoverHelper = setInterval(function(){
           if (cameraTopPosition <= 0){
-              cameraTopPosition += 0.005;
+              cameraTopPosition += 0.05;
           }
       }, frameTime);
 });
@@ -158,7 +159,7 @@ $('.camBottomMove').mouseover(function(){
     clearInterval(cameraHoverHelper);
       cameraHoverHelper = setInterval(function(){
         if (cameraTopPosition >= -(mapSize/2 - cameraZoom)){
-            cameraTopPosition -= 0.005;
+            cameraTopPosition -= 0.05;
         }
       }, frameTime);
 });
@@ -176,7 +177,7 @@ $('.camLeftMove').mouseover(function(){
     clearInterval(cameraHoverHelper);
     cameraHoverHelper = setInterval(function(){
         if (cameraLeftPosition <= 0){
-            cameraLeftPosition += 0.005;
+            cameraLeftPosition += 0.05;
         }
     }, frameTime);
 });
@@ -194,7 +195,7 @@ $('.camRightMove').mouseover(function(){
     clearInterval(cameraHoverHelper);
         cameraHoverHelper = setInterval(function(){
             if (cameraLeftPosition >= -(mapSize/2 - cameraZoom)){
-                cameraLeftPosition -= 0.005;
+                cameraLeftPosition -= 0.05;
             }
         }, frameTime);
 });
@@ -206,8 +207,20 @@ $('.camRightMove').mouseout(function(){
 /////////////////////////////////////////////////////
 
 
+function redrawMapObjects() {
+    var x, i;
+    x = document.querySelectorAll(".mapObject");
+    for (i = 0; i < x.length; i++) {
+        //x[i].style.backgroundColor = "blue";
+        x[i].style.top = (x[i].getAttribute("data-topposition")*gameResolution*cameraZoom)+'px';
+        x[i].style.left = (x[i].getAttribute("data-leftposition")*gameResolution*cameraZoom)+'px';
+        x[i].style.width = (x[i].getAttribute("data-width")*gameResolution*cameraZoom)+'px';
+        x[i].style.height = (x[i].getAttribute("data-height")*gameResolution*cameraZoom)+'px';
+    }
+  }
 
 
+  redrawMapObjects();
 
 
 

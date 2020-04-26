@@ -2,7 +2,7 @@
     var playerMaxSpeed = 2.5;
     var playerRuningSpeed = 1.5;
     var playerRuningStatus = false;
-    var mapSize = 100;
+    var mapSize = 5;
     var cameraZoom = 1;
     var cameraTopPosition = -0.5;
     var cameraLeftPosition = -0.5;
@@ -22,9 +22,6 @@
     var playerVSpeed = 0;
     var playerAcc = 1;
     var movementFriction = 0.8666665;
-
-
-
 
     $(document).keydown(function(e) {
         if (keysPressed.indexOf(e.keyCode) == -1){

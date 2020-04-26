@@ -10,5 +10,5 @@
 
 
 
-<script src="assets/js/jquery-3.3.1.js"></script>
+<script src="assets/js/3rdParty/jquery-3.4.1.js"></script>
 <script src="assets/js/login.js"></script>

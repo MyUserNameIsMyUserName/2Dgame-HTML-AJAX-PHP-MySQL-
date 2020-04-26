@@ -8,7 +8,7 @@ body{
     cursor:none;
 }
 
-.player, .enemy {
+.player, .enemy, .mapObject {
     /* border-radius: 50%; */
     color: white;
     position: absolute;
@@ -104,7 +104,7 @@ body{
 
 
 
-.enemyA {
+.enemyA,.objectA {
     width: 1px;
     height: 1px;
     position: absolute;
@@ -115,7 +115,7 @@ body{
     z-index: 20;
 }
 
-.enemyB {
+.enemyB,.objectB {
     width: 1px;
     height: 1px;
     position: absolute;
@@ -125,7 +125,7 @@ body{
     left: 0%;
     }
 
-.enemyC {
+.enemyC,.objectC {
 
     width: 1px;
     height: 1px;
@@ -136,7 +136,7 @@ body{
     left: 100%;
 }
 
-.enemyD {
+.enemyD,.objectD {
 
     width: 1px;
     height: 1px;
