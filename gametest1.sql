@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 14, 2019 at 07:05 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.7
+-- Generation Time: Apr 26, 2020 at 01:37 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `novitestingyes`
+-- Database: `gametest1`
 --
 
 -- --------------------------------------------------------
@@ -31,8 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `users_info` (
   `user_id` int(11) NOT NULL,
   `username` text NOT NULL,
-  `left_position` int(11) NOT NULL,
-  `top_position` int(11) NOT NULL,
+  `left_position` float NOT NULL,
+  `top_position` float NOT NULL,
   `user_color` varchar(7) NOT NULL,
   `user_angle` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -55,7 +55,7 @@ ALTER TABLE `users_info`
 -- AUTO_INCREMENT for table `users_info`
 --
 ALTER TABLE `users_info`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=228;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

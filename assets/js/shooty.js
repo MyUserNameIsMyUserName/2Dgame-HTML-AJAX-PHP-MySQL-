@@ -22,7 +22,7 @@ function intersects(a,b,c,d,p,q,r,s) {
     whoIsShot = "Null";
 
     $( ".enemy" ).each(function( index ) {
-        console.log( index + ": " + $( this ).text() );
+        //console.log( index + ": " + $( this ).text() );
         var enemyA = $(this).children(".enemyA").offset();
         var enemyB = $(this).children(".enemyB").offset();
         var enemyC = $(this).children(".enemyC").offset();

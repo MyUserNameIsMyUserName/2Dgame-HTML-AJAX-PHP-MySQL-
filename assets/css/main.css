@@ -1,0 +1,73 @@
+.camTopMove {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.camRightMove {
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    right: 0px; 
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.1);
+}
+.camBottomMove {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    bottom: 0px;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.1);
+}
+.camLeftMove {
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.camTopMove:hover, .camBottomMove:hover, .camLeftMove:hover, .camRightMove:hover{
+    background: rgba(0, 0, 0, 0.25);
+}
+.camTopMove:hover:before, .camBottomMove:hover:before, .camLeftMove:hover:before, .camRightMove:hover:before{
+    color: rgb(255, 255, 255);
+}
+
+.camBottomMove:before, 
+.camTopMove:before {
+    content: "\\/";
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 38px;
+    line-height: 1em;
+    padding: 0px;
+    margin: 0px;
+    font-weight: 900;
+    top: 0px;
+}
+ 
+.camTopMove:before {
+    content: "/\\";
+}
+.camLeftMove:before, 
+.camRightMove:before {
+    content: "<";
+    text-align: center;
+    width: 100%;
+    display: block;
+    position: relative;
+    font-size: 38px;
+    height: 100%;
+    top: calc(50% - 19px);
+    line-height: 1em;
+    font-weight: 900;
+}
+ 
+.camRightMove:before {
+    content: ">";
+}
